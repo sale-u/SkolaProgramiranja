@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+/* universal style:
+*{
+	background-color: #ff99ff;
+}
+*/
+
 h1{
 	font-weight: bold;
 	font-family: Times New Roman;
@@ -30,4 +36,9 @@ h1{
 	font-family: Times New Roman;
 	font-size: 14px;
 	color: #e68a00;
+}
+
+.email {
+	font-style: normal;
+	color: red;
 }
