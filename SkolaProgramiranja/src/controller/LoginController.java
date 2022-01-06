@@ -13,28 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(description = "ovo je servlet za login", urlPatterns = { "/LoginControllerPath" })
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * Default constructor. 
-     * @see HttpServlet#HttpServlet()
-     */
+       
     public LoginController() {
-    	super();
-        // TODO Auto-generated constructor stub
+        super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		System.out.println("Dobrodosli u doGet");
-
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		System.out.println("Dobrodosli u doPost");
-		
 	}
 
 }
