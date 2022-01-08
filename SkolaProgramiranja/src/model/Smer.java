@@ -3,7 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +19,7 @@ public class Smer {
 	private int idSmer;
 	private String nazivSmera;
 	private String sifraSmera;
-	@ManyToMany(mappedBy = "smeroviNaKojimaJePredmet")
+	@ManyToMany(mappedBy = "smeroviNaKojimaJePredmet") // , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Predmet> predmetiNaSmeru = new ArrayList<>();
 	
 	// =========================================================================================	
