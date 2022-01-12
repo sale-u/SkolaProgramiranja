@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 public class Student extends UserDetails {
 	
 	private String indexNo;
-	@ManyToOne
+	@ManyToOne				// moze biti vise studenata na jednom smeru
 	private Smer smer;
 	
 	// =========================================================================================

@@ -2,9 +2,12 @@ package controller;
 
 import org.hibernate.Transaction;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -62,7 +65,8 @@ public class TestSale {
 		Student student1 = ubaciStudenta(2, "ABC123", "Student1", "Studentic1", "Beograd", "stud1@gmail.com", smer1);
 		Student student2 = ubaciStudenta(5, "DEF123", "Student2", "Studentic2", "Beograd", "stud2@gmail.com", smer2);
 		
-		poloziIspit(student1, predmetProf1, new Date(), 8);
+		Date date1 = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
+		poloziIspit(student1, predmetProf1, date1, 8);
 		poloziIspit(student1, predmetProf2, new Date(), 6);
 		poloziIspit(student2, predmetProf1, new Date(), 7);
 		poloziIspit(student2, predmetProf2, new Date(), 10);
@@ -180,8 +184,8 @@ public class TestSale {
 			for (Predmet p : predmetiNaSmeru) {
 				Predmet pr = session.get(Predmet.class, p.getIdPredmet()); // poziv iz baze - ponovo je perzistentan
 				Hibernate.initialize(pr.getSmeroviNaKojimaJePredmet());	// jer smeroviNaKojimaJePredmet po dfltu LAZY
-				pr.getSmeroviNaKojimaJePredmet().add(smer);
-				smer.getPredmetiNaSmeru().add(pr);
+				pr.getSmeroviNaKojimaJePredmet().add(smer);		// azuriramo listu smerova na predmetu
+				smer.getPredmetiNaSmeru().add(pr);				// azuriramo listu predmeta na smeru
 			}
 			System.out.println("Ubacen smer " + smer.getNazivSmera() + " i azuriran sa predmetima");
 			tx.commit();
