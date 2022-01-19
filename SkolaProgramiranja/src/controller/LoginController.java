@@ -2,11 +2,15 @@ package controller;
 
 import java.io.IOException;
 
+// Validacija username : min 4 char
+// Validacija password: min 7 char, min 1 veliko slovo, min 1 broj
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import model.UserDetails;
@@ -36,6 +40,42 @@ public class LoginController extends HttpServlet {
 		
 		System.out.println("UN: " + userName);
 		System.out.println("Password: " + password);
+		
+		// 1.  Proveriti da li su userName i password null ili prazni?
+		boolean daLiSuUserIPassPrazni = service.proveriUserIPassPrazni(userName, password);
+		
+		if (daLiSuUserIPassPrazni) {
+			// 1a. Ako su userName ili pass prazni ili null onda vrati odgovor da mora popuniti ta polja
+			response.sendRedirect("stranice/prazan_unos.html");
+		} else {
+			// 1b. Ako nisu prazni i null idemo dalje
+			// 2.  Da li postoje ukucani userName i pass u bazi?
+			User user = service.vratiAkoPostojiUser(userName, password);
+			if (user != null) {
+				// 2b  Ako postoji user onda ga prebaci na njegovu HTML stranu
+				HttpSession sesija = request.getSession();
+				sesija.setAttribute("user", user);
+				if (user.getUserType() == UserType.ADMINISTRACIJA) {
+					response.sendRedirect("view/admin.jsp");
+				} else if (user.getUserType() == UserType.STUDENT) {
+					response.sendRedirect("view/student.jsp");
+				} else if (user.getUserType() == UserType.PROFESOR) {
+					response.sendRedirect("view/profesor.jsp");
+				} else {
+					response.sendRedirect("stranice/loginError.html");
+				}
+				
+				
+			} else {
+				// 2a. Ako ne postoji u bazi onda vracamo neki odgovor da pokusa ponovo -> ponovo ide na logovanje
+				response.sendRedirect("stranice/login.html");
+			}
+			
+			
+		}
+		
+		
+		
 
 		
 		
