@@ -52,9 +52,13 @@ public class LoginController extends HttpServlet {
 			// 2.  Da li postoje ukucani userName i pass u bazi?
 			User user = service.vratiAkoPostojiUser(userName, password);
 			if (user != null) {
+				
 				// 2b  Ako postoji user onda ga prebaci na njegovu HTML stranu
 				HttpSession sesija = request.getSession();
+				
+				// "U kutiju ubacujemo objekat user i na kutiji pisemo user"
 				sesija.setAttribute("user", user);
+				
 				if (user.getUserType() == UserType.ADMINISTRACIJA) {
 					response.sendRedirect("view/admin.jsp");
 				} else if (user.getUserType() == UserType.STUDENT) {

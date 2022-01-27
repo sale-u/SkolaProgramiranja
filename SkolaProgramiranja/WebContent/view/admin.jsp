@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import = "model.User" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +12,17 @@
 		rel = "stylesheet"
 		href = "../css/style.css"
 	/>
-	<!--  Linkovi za BootStrap5 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
+	<!--  Iz tekuce HTTP sesije izvlacimo ranije ubaceni atribut "user" u dodeljujemo ga konkr.objektu User user -->
+	<jsp:useBean id="user" scope="session" class="model.User"></jsp:useBean>
 	<h1>Dobrodosli na administratorsku stranicu</h1>
-
+	<p style = "display: inline;">Ulogovan je : ${user.getUserName()} </p>
+	<a href="logout.jsp" style = "margin-left: 70px;">Logout <img src="../slike/logout.jfif"/></a> <br><br>
+	<img src = "../slike/adminPage.jfif"/> <br> <br>
+	<a href="addStudent.jsp"><button>ADD STUDENT</button></a>
+	
 </body>
 
 </html>
