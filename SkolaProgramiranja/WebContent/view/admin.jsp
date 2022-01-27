@@ -22,6 +22,8 @@
 	<a href="logout.jsp" style = "margin-left: 70px;">Logout <img src="../slike/logout.jfif"/></a> <br><br>
 	<img src = "../slike/adminPage.jfif"/> <br> <br>
 	<a href="addStudent.jsp"><button>ADD STUDENT</button></a>
+	<a href="addProfesor.jsp"><button>ADD PROFESOR</button></a>
+	<a href="addAdministracija.jsp"><button>ADD ADMINISTRATOR</button></a>
 	
 </body>
 
