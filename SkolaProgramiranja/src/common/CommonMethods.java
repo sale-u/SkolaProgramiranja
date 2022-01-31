@@ -3,7 +3,9 @@ package common;
 import model.Address;
 import model.Administrator;
 import model.Contact;
+import model.Predmet;
 import model.Profesor;
+import model.Smer;
 import model.Student;
 import model.User;
 import model.UserDetails;
@@ -156,6 +158,25 @@ public class CommonMethods {
 		details.setContact(contact);
 		
 		return details;		// vracamo referencu UserDetails details koja ukazuje na konkretan objekat subklase
+	}
+	
+	// ==========================================================================================
+
+	public Predmet popuniPredmet(String nazivPredmeta, String sifraPredmeta) {
+		Predmet predmet = new Predmet();
+		predmet.setNazivPredmeta(nazivPredmeta);
+		predmet.setSifraPredmeta(sifraPredmeta);
+		return predmet;
+	}
+	
+	// ==========================================================================================
+
+	public Smer popuniSmer(String nazivSmera, String sifraSmera) {
+		
+		Smer smer = new Smer();
+		smer.setNazivSmera(nazivSmera);
+		smer.setSifraSmera(sifraSmera);
+		return smer;
 	}
 
 	// ==========================================================================================

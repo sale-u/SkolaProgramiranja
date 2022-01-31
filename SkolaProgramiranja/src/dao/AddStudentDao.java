@@ -12,7 +12,7 @@ import model.UserDetails;
 
 public class AddStudentDao {
 	
-	SessionFactory sf = new Configuration().configure().buildSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	
 	// ===========================================================================
 	

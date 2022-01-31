@@ -23,7 +23,15 @@
 	<img src = "../slike/adminPage.jfif"/> <br> <br>
 	<a href="addStudent.jsp"><button>ADD STUDENT</button></a>
 	<a href="addProfesor.jsp"><button>ADD PROFESOR</button></a>
-	<a href="addAdministracija.jsp"><button>ADD ADMINISTRATOR</button></a>
+	<a href="addAdministracija.jsp"><button>ADD ADMINISTRATOR</button></a><br><br>
+	
+	<a href="dodajPredmet.jsp"><button>DODAJ PREDMET</button></a>
+	<a href="dodajSmer.jsp"><button>DODAJ SMER</button></a> <br><br>
+	
+	<a href="../PrikaziProfesoreController"><button>PRIKAZI PROFESORE</button></a>
+	
+	
+	
 	
 </body>
 
