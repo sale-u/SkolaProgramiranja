@@ -3,11 +3,13 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.exception.ConstraintViolationException;
 
 import model.Predmet;
 import model.Profesor;
@@ -147,7 +149,12 @@ public class PrikaziProfesoreDao {
 				System.out.println("Uspesno dodeljen predmet profesoru");
 			} else {
 				System.out.println("Taj predmet " + predmet.getNazivPredmeta() + " je VEC dodeljen profesoru " + prof.getIdUserDetails());
-			}
+			}	
+		} catch (PersistenceException e) {
+			// Relacija profesor->predmet je OneToMany pa nije moguce da jedan predmet predaje vise profesora!
+			session.getTransaction().rollback();
+			System.out.println("Predmet " + predmet.getNazivPredmeta() + " nije moguce dodati profesoru idProfesor=" 
+						+ prof.getIdUserDetails() + " jer taj predmet vec predaje neki drugi profesor >>> " + e);
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			System.out.println("Nesto nije u redu sa dodajPredmetProfesoru()! " + e);

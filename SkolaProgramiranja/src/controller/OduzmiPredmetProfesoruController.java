@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import service.PrikaziProfesoreService;
 
 /**
- * Servlet implementation class OduzmiPredmetProfesoru
+ * Servlet implementation class OduzmiPredmetProfesoruController
  */
-@WebServlet(description = "skini predmet sa profesora", urlPatterns = { "/OduzmiPredmetProfesoru" })
-public class OduzmiPredmetProfesoru extends HttpServlet {
+@WebServlet(description = "skini predmet sa profesora", urlPatterns = { "/OduzmiPredmetProfesoruController" })
+public class OduzmiPredmetProfesoruController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -34,7 +34,7 @@
 				<td>${p.nazivPredmeta }</td>
 				<td>${p.sifraPredmeta }</td>
 				<td>
-					<form action="OduzmiPredmetProfesoru" method="get">
+					<form action="OduzmiPredmetProfesoruController" method="get">
 						<input type="hidden" name="idProfesor" value="${profesor.idUserDetails }">
 						<input type="hidden" name="idPredmet" value="${p.idPredmet }">
 						<input type="submit" value="UKLONI PREDMET">
@@ -46,7 +46,7 @@
 	</table>
 	<br>
 	DODAJ PREDMET <br>
-	<form action="DodajPredmetProfesoru" method="get">
+	<form action="DodajPredmetProfesoruController" method="get">
 		<input type="hidden" name="idProfesor" value="${profesor.idUserDetails }">
 		<select name="idPredmet">
 			<c:forEach var="pr" items="${sviPredmeti}">

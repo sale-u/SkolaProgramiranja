@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import service.PrikaziProfesoreService;
 
 /**
- * Servlet implementation class DodajPredmetProfesoru
+ * Servlet implementation class DodajPredmetProfesoruController
  */
-@WebServlet(description = "dodeli profesoru predmet", urlPatterns = { "/DodajPredmetProfesoru" })
-public class DodajPredmetProfesoru extends HttpServlet {
+@WebServlet(description = "dodeli profesoru predmet", urlPatterns = { "/DodajPredmetProfesoruController" })
+public class DodajPredmetProfesoruController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -26,7 +26,9 @@ public class DodajPredmetProfesoru extends HttpServlet {
 		
 		service.dodajPredmetProfesoru(idProfesor, idPredmet);
 		
-		response.sendRedirect("PredmetiProfesoriController?idProfesor=" + idProfesor); // ubaceno i ?idProfesor= jer nam treba i idProfesor kada ga vracamo na prethodnu stranu
+		response.sendRedirect("PredmetiProfesoriController?idProfesor=" + idProfesor); 
+		// ubaceno i ?idProfesor= jer nam treba i idProfesor kada ga vracamo na prethodnu stranu
+		// koja se odnosi na tacno odredjenog profesora pod odredjenim idProfesor!
 		
 	}
 
