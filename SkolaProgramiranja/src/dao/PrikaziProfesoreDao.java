@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import model.Predmet;
+import model.Profesor;
 import wrapper.ProfesorWrapper;
 
 public class PrikaziProfesoreDao {
@@ -67,6 +70,126 @@ public class PrikaziProfesoreDao {
 		} finally {
 			session.close();
 		}
+	}
+	
+	// ===========================================================================
+
+	public List<Predmet> vratiSvePredmete() {
+		
+		List<Predmet> listaPredmeta = new ArrayList<>();
+		
+		Session session = sf.openSession();
+		session.beginTransaction();
+		try {
+			String hql = "FROM Predmet";
+			Query query = session.createQuery(hql);
+			listaPredmeta = query.getResultList();
+			
+			session.getTransaction().commit();
+			System.out.println("Uspesno vracena lista predmeta");
+			return listaPredmeta;
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Nesto nije u redu sa vratiSvePredmete()! " + e);
+			return null;
+		} finally {
+			session.close();
+		}
+		
+	}
+
+	public Profesor vratiProfesoraPoID(String idProfesor) {
+
+		Profesor prof = new Profesor();
+		
+		Session session = sf.openSession();
+		session.beginTransaction();
+		try {
+			prof = session.get(Profesor.class, Integer.parseInt(idProfesor));
+			Hibernate.initialize(prof.getPredmetiKojePredaje());
+			session.getTransaction().commit();
+			System.out.println("Uspesno vracen profesor");
+			return prof;
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Nesto nije u redu sa vratiProfesoraPoID()! " + e);
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+
+	public void dodajPredmetProfesoru(String idProfesor, String idPredmet) {
+		// na osnovu idProfesor i idPredmet, iz baze povlacimo kompletne objekte profesor i predmet
+		// i onda ih spajamo
+		
+		Profesor prof = new Profesor();
+		Predmet predmet = new Predmet();
+		
+		Session session = sf.openSession();
+		session.beginTransaction();
+		try {
+			// vadimo profesora iz baze na osnovu idProfesor
+			prof = session.get(Profesor.class, Integer.parseInt(idProfesor));
+			// i njegovu listu predmetiKojePredaje
+			Hibernate.initialize(prof.getPredmetiKojePredaje());
+			// vadimo predmet iz baze na osnovu idPredmet
+			predmet = session.get(Predmet.class, Integer.parseInt(idPredmet));
+			System.out.println("Prof=" + prof.getIdUserDetails() + " predmet=" + predmet.getIdPredmet() + " > " + predmet.getNazivPredmeta());;
+			
+			if (!prof.getPredmetiKojePredaje().contains(predmet)) {
+				// Ako taj predmet nije vec dodeljen profesoru
+				// dodajemo predmet u listu predmetiKojePredaje 
+				prof.getPredmetiKojePredaje().add(predmet);
+				session.saveOrUpdate(prof);
+				session.getTransaction().commit();
+				System.out.println("Uspesno dodeljen predmet profesoru");
+			} else {
+				System.out.println("Taj predmet " + predmet.getNazivPredmeta() + " je VEC dodeljen profesoru " + prof.getIdUserDetails());
+			}
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Nesto nije u redu sa dodajPredmetProfesoru()! " + e);
+		} finally {
+			session.close();
+		}
+		
+	}
+
+	
+	public void oduzmiPredmetProfesoru(String idProfesor, String idPredmet) {
+
+		// na osnovu idProfesor i idPredmet, iz baze povlacimo kompletne objekte profesor i predmet
+		// i onda iz profesorove liste skidamo predmet
+		
+		Profesor prof = new Profesor();
+		Predmet predmet = new Predmet();
+		
+		Session session = sf.openSession();
+		session.beginTransaction();
+		try {
+			// vadimo profesora iz baze na osnovu idProfesor
+			prof = session.get(Profesor.class, Integer.parseInt(idProfesor));
+			// i njegovu listu predmetiKojePredaje
+			Hibernate.initialize(prof.getPredmetiKojePredaje());
+			// vadimo predmet iz baze na osnovu idPredmet
+			predmet = session.get(Predmet.class, Integer.parseInt(idPredmet));
+			System.out.println("Prof=" + prof.getIdUserDetails() + " predmet=" + predmet.getIdPredmet() + " > " + predmet.getNazivPredmeta());;
+			
+			if (prof.getPredmetiKojePredaje().contains(predmet)) {
+				prof.getPredmetiKojePredaje().remove(predmet);
+				session.saveOrUpdate(prof);
+				session.getTransaction().commit();
+				System.out.println("Uspesno oduzet predmet profesoru");
+			}
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Nesto nije u redu sa oduzmiPredmetProfesoru()! " + e);
+		} finally {
+			session.close();
+		}
+		
 	}
 	
 

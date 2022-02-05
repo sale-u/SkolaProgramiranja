@@ -19,6 +19,10 @@ public class Predmet {
 	private int idPredmet;
 	private String nazivPredmeta;
 	private String sifraPredmeta;
+//	// dodato 04.02.2022
+//	@ManyToMany (mappedBy = "predmetiKojePredaje")
+//	private List<Profesor> profesoriKojiPredajuPredmet = new ArrayList<>();
+//	// ====================
 	@ManyToMany
 	private List<Smer> smeroviNaKojimaJePredmet = new ArrayList<>();
 	
@@ -48,5 +52,6 @@ public class Predmet {
 	public void setSmeroviNaKojimaJePredmet(List<Smer> smeroviNaKojimaJePredmet) {
 		this.smeroviNaKojimaJePredmet = smeroviNaKojimaJePredmet;
 	}
+
 	
 }

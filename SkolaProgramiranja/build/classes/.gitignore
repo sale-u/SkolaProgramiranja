@@ -1,5 +1,4 @@
 /controller/
-/service/
 /dao/
-/common/
-/wrapper/
+/service/
+/model/

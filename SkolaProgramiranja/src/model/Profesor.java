@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,6 +13,10 @@ public class Profesor extends UserDetails {
 	private String identificationNo;
 	@OneToMany
 	private List<Predmet> predmetiKojePredaje = new ArrayList<>();
+	// izmena 04.02.2022
+//	@ManyToMany
+//	private List<Predmet> predmetiKojePredaje = new ArrayList<>();
+	
 	
 	// =========================================================================================
 	
