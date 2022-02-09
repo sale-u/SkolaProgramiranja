@@ -20,7 +20,7 @@ public class DodajPredmetProfesoruController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PrikaziProfesoreService service = new PrikaziProfesoreService();
-		
+	
 		String idProfesor = request.getParameter("idProfesor");
 		String idPredmet = request.getParameter("idPredmet");
 		

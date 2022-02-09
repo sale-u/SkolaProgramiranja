@@ -38,8 +38,7 @@
 						<input type="hidden" name="idProfesor" value="${profesor.idUserDetails }">
 						<input type="hidden" name="idPredmet" value="${p.idPredmet }">
 						<input type="submit" value="UKLONI PREDMET">
-					</form>
-						
+					</form>	
 				</td>
 			</tr>
 		</c:forEach>
