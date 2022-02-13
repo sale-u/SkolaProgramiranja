@@ -24,5 +24,13 @@ public class Student extends UserDetails {
 	public void setSmer(Smer smer) {
 		this.smer = smer;
 	}
+	
+	@Override
+	public String toString() {
+		return "Student [indexNo=" + indexNo + ", getIdUserDetails()=" + getIdUserDetails()
+		+ ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() +", smer=" + smer +  "]";
+	}
+	
+	
 
 }

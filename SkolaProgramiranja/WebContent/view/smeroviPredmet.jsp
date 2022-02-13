@@ -19,16 +19,18 @@
 		class="java.util.ArrayList"></jsp:useBean>
 	<h1>PREDMETI i SMEROVI</h1>
 	<a href="view/admin.jsp">back to ADMIN page</a>
-	<br>
-	<br> Lista smerova : ${sviSmerovi.size() }
-	<br> Lista predmeta : ${sviPredmeti.size() }
+	<br><br><br>
+	<!-- <br> Lista smerova : ${sviSmerovi.size() } -->
+	<!-- <br> Lista predmeta : ${sviPredmeti.size() } -->
+	
 
 	<form action="PoveziSmerPredmetController" method="get">
-		Predmet: <select name="idPredmet">
+		<b>Predmet:</b> <select name="idPredmet">
 			<c:forEach var="p" items="${sviPredmeti }">
 				<option value="${p.idPredmet }">${p.nazivPredmeta }</option>
 			</c:forEach>
-		</select> Smer: <select name="idSmer">
+		</select> 
+		<b>Smer:</b> <select name="idSmer">
 			<c:forEach var="s" items="${sviSmerovi }">
 				<option value="${s.idSmer }">${s.nazivSmera }</option>
 			</c:forEach>
@@ -36,13 +38,13 @@
 	</form>
 
 	<br>
-	<br>
 
 	<!-- Domaci: ispisati Smerove i tabelarno Predmete koji su vezani za te smerove -->
 	<!-- Domaci: implementirati razbijanje veze izmedju odredjenog predmeta i smera -->
+	
 	<c:forEach var="s" items="${sviSmerovi }">
-		<h3>Smer: ${s.idSmer } ---- ${s.nazivSmera}</h3>
-		<table border="1">
+		<h4>Smer: ${s.idSmer } ---- ${s.nazivSmera}</h4>
+		<table border="1px">
 			<tr>
 				<th>ID PREDMETA</th>
 				<th>NAZIV PREDMETA</th>

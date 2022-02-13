@@ -49,4 +49,10 @@ public class Smer {
 		this.predmetiNaSmeru = predmetiNaSmeru;
 	}
 	
+	@Override
+	public String toString() {
+		return "Smer [idSmer=" + idSmer + ", nazivSmera=" + nazivSmera + ", sifraSmera=" + sifraSmera + "]";
+	}
+	
+	
 }
