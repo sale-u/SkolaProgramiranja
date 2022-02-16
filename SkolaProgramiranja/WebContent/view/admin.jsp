@@ -17,10 +17,13 @@
 <body>
 	<!--  Iz tekuce HTTP sesije izvlacimo ranije ubaceni atribut "user" u dodeljujemo ga konkr.objektu User user -->
 	<jsp:useBean id="user" scope="session" class="model.User"></jsp:useBean>
+	
 	<h1>Dobrodosli na administratorsku stranicu</h1>
-	<p style = "display: inline;">Ulogovan je : ${user.getUserName()} </p>
+	
+	<p style = "display: inline;">Ulogovan je administrator : <b>${user.getUserName()}</b> </p>
 	<a href="logout.jsp" style = "margin-left: 70px;">Logout <img src="../slike/logout.jfif"/></a> <br><br>
 	<img src = "../slike/adminPage.jfif"/> <br> <br>
+	
 	<a href="addStudent.jsp"><button>ADD STUDENT</button></a>
 	<a href="addProfesor.jsp"><button>ADD PROFESOR</button></a>
 	<a href="addAdministracija.jsp"><button>ADD ADMINISTRATOR</button></a><br><br>
@@ -33,6 +36,12 @@
 	<a href="../SmerPredmetController"><button>PRIKAZI SMEROVE</button></a>
 	<br><br>
 	<a href="../StudentController"><button>STUDENT-SMER</button></a>
+	
+	<br><br>
+		<form action = "../ProfileController" method = "get">
+		<input type="hidden" value="${user.idUser }" name = "idUser">
+		<input type="submit" value="VIEW-EDIT PROFILE">
+	</form>
 	
 </body>
 

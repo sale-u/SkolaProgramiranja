@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import = "model.User" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,22 @@
 </head>
 
 <body>
+	<jsp:useBean id="user" scope="session" class="model.User"></jsp:useBean>
+	
 	<h1>Dobrodosli na Studentsku stranicu</h1>
+	
+	<p style = "display: inline;">Ulogovan je student : <b>${user.getUserName()}</b> </p>
+	<a href="logout.jsp" style = "margin-left: 70px;">Logout <img src="../slike/logout.jfif"/></a> <br><br>
+	<img src = "../slike/student.jpg"/> <br> <br>
+	
+	<br>
+	<form action = "../ProfileController" method = "get">
+		<input type="hidden" value="${user.idUser }" name = "idUser">
+		<input type="submit" value="VIEW-EDIT PROFILE">
+	</form>
+	
+	
+	
 </body>
 
 </html>

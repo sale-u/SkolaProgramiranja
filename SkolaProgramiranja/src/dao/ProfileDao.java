@@ -1,6 +1,5 @@
 package dao;
 
-import javax.crypto.IllegalBlockSizeException;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
