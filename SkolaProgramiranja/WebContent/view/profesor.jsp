@@ -26,12 +26,12 @@
 	
 	<form action = "../ProfileController" method = "get">
 		<input type="hidden" value="${user.idUser }" name = "idUser">
-		<input type="submit" value="VIEW-EDIT PROFILE">
+		<input type="submit" value="VIEW-EDIT PROFILE" class = "btn btn-primary" style="margin-left: 2%;">
 	</form>
 	
 	<form action = "../ProfesorController" method = "get">
 		<input type="hidden" value="${user.idUser }" name = "idUser"> <br>
-		<input type="submit" value="MOJI PREDMETI">
+		<input type="submit" value="MOJI PREDMETI" class = "btn btn-primary" style="margin-left: 3%;">
 	</form>
 
 

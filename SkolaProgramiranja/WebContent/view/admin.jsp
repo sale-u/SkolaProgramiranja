@@ -33,7 +33,7 @@
 	
 	<a href="../PrikaziProfesoreController"><button>PRIKAZI PROFESORE</button></a>
 	<br><br>
-	<a href="../SmerPredmetController"><button>PRIKAZI SMEROVE</button></a>
+	<a href="../SmerPredmetController"><button>SMER-PREDMET</button></a>
 	<br><br>
 	<a href="../StudentController"><button>STUDENT-SMER</button></a>
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.ProfesorDao;
 import dao.ProfileDao;
+import model.PolozeniIspiti;
 import model.Predmet;
 import model.Profesor;
 import model.Smer;
@@ -33,6 +34,15 @@ public class ProfesorService {
 
 	public Predmet vratiPredmetPoId(String idPredmeta) {
 		return dao.vratiPredmetPoId(idPredmeta);
+	}
+
+	public void upisiOcenu(int predmetId, int studentId, int ocena) {
+		dao.upisiOcenu(predmetId, studentId, ocena);
+		
+	}
+
+	public List<PolozeniIspiti> vratiPolozeneIspite(String idPredmet, String studentId) {
+		return dao.vratiPolozeneIspite(idPredmet, studentId);
 	}
 
 }

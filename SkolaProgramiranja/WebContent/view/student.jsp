@@ -28,9 +28,14 @@
 	<br>
 	<form action = "../ProfileController" method = "get">
 		<input type="hidden" value="${user.idUser }" name = "idUser">
-		<input type="submit" value="VIEW-EDIT PROFILE">
+		<input type="submit" value="VIEW-EDIT PROFILE" class = "btn btn-primary" style="margin-left: 2%;">
 	</form>
 	
+	<br>
+	<form action = "../PrikaziStudentuOcene" method = "get">
+		<input type="hidden" value="${user.idUser }" name = "idUser">
+		<input type="submit" value="PRIKAZI OCENE" class = "btn btn-primary" style="margin-left: 3%;">
+	</form>
 	
 	
 </body>
